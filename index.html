@@ -9,10 +9,13 @@
   <body>
     <h1>Find referrals to sign up on exchanges here</h1>
     <table class="table">
-      <th>Exchange</th>
-      <th>Link</th>
-      <th>Code</th>
-      <th>Note</th>
+      <thead>
+        <th>Exchange</th>
+        <th>Link</th>
+        <th>Code</th>
+        <th>Note</th>
+      </thead>
+      <tbody></tbody>
     </table>
     <footer>
       Disclaimer: Whenever possible, I chose to give the maximum bonus to you
@@ -27,6 +30,18 @@
         //   c: "",
         //   n: "",
         // },
+        {
+          ex: "Spectrocoin",
+          l: "https://spectrocoin.com/en/invite?referralId=395409848",
+          c: "395409848",
+          n: "",
+        },
+        {
+          ex: "Huobi",
+          l: "https://www.huobi.com/en-us/topic/invited/?invite_code=nkyg7",
+          c: "nkyg7",
+          n: "",
+        },
         {
           ex: "Bitfinex",
           l: "https://www.bitfinex.com/?refcode=5qnpl2k0C",
@@ -77,7 +92,7 @@
         },
       ];
 
-      const table = document.querySelector(".table");
+      const table = document.querySelector(".table > tbody");
       data.forEach((d) => {
         const tData = document.createElement("tr");
         tData.innerHTML = `<td class="exchange">${d.ex}</td><td class="link">${d.l}</td><td class="code">${d.c}</td><td class="note">${d.n}</td>`;
