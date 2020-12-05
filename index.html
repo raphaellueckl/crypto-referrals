@@ -25,24 +25,33 @@
         flex-shrink: 0;
       }
 
-      /* @media (min-width: 576px) {
-        .content,
-        footer {
-          width: 80%;
+      thead {
+        display: none;
+      }
+
+      tr {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        align-items: center;
+      }
+
+      .mobile-table-label {
+        font-weight: 600;
+      }
+
+      @media (min-width: 576px) {
+        .mobile-table-label {
+          display: none;
         }
-      } */
+      }
     </style>
   </head>
   <body>
     <h1>Find referrals to sign up on exchanges here</h1>
     <div class="content">
       <table class="table">
-        <thead>
-          <th>Exchange</th>
-          <th>Link</th>
-          <th>Code</th>
-          <th>Note</th>
-        </thead>
+        <thead></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -51,14 +60,10 @@
       instead of me. Biance is 50/50% for instance, while I could have given me
       100% of the bonus and you 0.
     </footer>
+
     <script>
+      const th = ["Exchange", "Link", "Code", "Note"];
       const data = [
-        // {
-        //   ex: "",
-        //   l: "",
-        //   c: "",
-        //   n: "",
-        // },
         {
           ex: "Coinbase",
           l: "https://www.coinbase.com/join/lueckl_m",
@@ -121,11 +126,18 @@
         },
       ];
 
-      const table = document.querySelector(".table > tbody");
+      const tableHead = document.querySelector(".table > thead");
+      th.forEach((h) => {
+        const tHead = document.createElement("td");
+        tHead.textContent = h;
+        tableHead.appendChild(tHead);
+      });
+
+      const tableBody = document.querySelector(".table > tbody");
       data.forEach((d) => {
         const tData = document.createElement("tr");
-        tData.innerHTML = `<td class="exchange">${d.ex}</td><td class="link"><a href="${d.l}" target="_blank">${d.l}</a></td><td class="code">${d.c}</td><td class="note">${d.n}</td>`;
-        table.appendChild(tData);
+        tData.innerHTML = `<td class="exchange"><span class="mobile-table-label">Exchange: </span>${d.ex}</td><td class="link"><span class="mobile-table-label">Link: </span><a href="${d.l}" target="_blank">${d.l}</a></td><td class="code"><span class="mobile-table-label">Code: </span>${d.c}</td><td class="note"><span class="mobile-table-label">Note: </span>${d.n}</td>`;
+        tableBody.appendChild(tData);
       });
     </script>
   </body>
