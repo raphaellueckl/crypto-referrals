@@ -95,7 +95,7 @@
       const table = document.querySelector(".table > tbody");
       data.forEach((d) => {
         const tData = document.createElement("tr");
-        tData.innerHTML = `<td class="exchange">${d.ex}</td><td class="link">${d.l}</td><td class="code">${d.c}</td><td class="note">${d.n}</td>`;
+        tData.innerHTML = `<td class="exchange">${d.ex}</td><td class="link"><a href="${d.l}" target="_blank">${d.l}</a></td><td class="code">${d.c}</td><td class="note">${d.n}</td>`;
         table.appendChild(tData);
       });
     </script>
