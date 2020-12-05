@@ -8,10 +8,46 @@
   </head>
   <body>
     <h1>Find referrals to sign up on exchanges here</h1>
-    <table>
+    <table class="table">
       <th>Exchange</th>
       <th>Link</th>
       <th>Code</th>
+      <th>Note</th>
     </table>
+    <script>
+      const data = [
+        // {
+        //   ex: "",
+        //   l: "",
+        //   c: "",
+        //   n: "",
+        // },
+        {
+          ex: "Binance",
+          l: "https://www.binance.com/en/register?ref=VPQZMA13",
+          c: "VPQZMA13",
+          n: "10% kickback for you",
+        },
+        {
+          ex: "Crypto.com - App",
+          l: "https://crypto.com/app/dv8cngf933",
+          c: "dv8cngf933",
+          n: "25$ for you",
+        },
+        {
+          ex: "Crypto.com - Exchange",
+          l: "https://crypto.com/exch/dv8cngf933",
+          c: "dv8cngf933",
+          n: "25$ for you",
+        },
+      ];
+
+      const table = document.querySelector(".table");
+      data.forEach((d) => {
+        const tData = document.createElement("tr");
+        tData.innerHTML = `<td class="exchange">${d.ex}</td><td class="link">${d.l}</td><td class="code">${d.c}</td><td class="note">${d.n}</td>`;
+        table.appendChild(tData);
+      });
+    </script>
   </body>
 </html>
