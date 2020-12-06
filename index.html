@@ -34,6 +34,9 @@
         flex-direction: column;
         border: 1px solid black;
         align-items: center;
+        margin: 2px 0;
+        padding: 5px;
+        border-radius: 15px;
       }
 
       .mobile-table-label {
@@ -50,6 +53,7 @@
   <body>
     <h1>Find referrals to sign up on exchanges here</h1>
     <div class="content">
+      <input class="filter-input" />
       <table class="table">
         <thead></thead>
         <tbody></tbody>
@@ -62,8 +66,27 @@
     </footer>
 
     <script>
-      const th = ["Exchange", "Link", "Code", "Note"];
-      const data = [
+      let filterValue = "";
+      if (window.location.href.includes("q=")) {
+        const filterValueStartIndex =
+          window.location.href.indexOf("q=") + "q=".length;
+        if (
+          window.location.href.substring(filterValueStartIndex).includes("&")
+        ) {
+          const endIndex = window.location.href
+            .substring(filterValueStartIndex)
+            .indexOf("&");
+          filterValue = window.location.href
+            .substring(filterValueStartIndex)
+            .substring(0, endIndex);
+        } else {
+          filterValue = window.location.href.substring(filterValueStartIndex);
+        }
+        document.querySelector(".filter-input").value = filterValue;
+      }
+
+      const thData = ["Exchange", "Link", "Code", "Note"];
+      const tbData = [
         {
           ex: "Coinbase",
           l: "https://www.coinbase.com/join/lueckl_m",
@@ -127,18 +150,35 @@
       ];
 
       const tableHead = document.querySelector(".table > thead");
-      th.forEach((h) => {
+      thData.forEach((h) => {
         const tHead = document.createElement("td");
         tHead.textContent = h;
         tableHead.appendChild(tHead);
       });
 
-      const tableBody = document.querySelector(".table > tbody");
-      data.forEach((d) => {
-        const tData = document.createElement("tr");
-        tData.innerHTML = `<td class="exchange"><span class="mobile-table-label">Exchange: </span>${d.ex}</td><td class="link"><span class="mobile-table-label">Link: </span><a href="${d.l}" target="_blank">${d.l}</a></td><td class="code"><span class="mobile-table-label">Code: </span>${d.c}</td><td class="note"><span class="mobile-table-label">Note: </span>${d.n}</td>`;
-        tableBody.appendChild(tData);
-      });
+      const drawTable = (filter) => {
+        const tableBody = document.querySelector(".table > tbody");
+        tableBody.innerHTML = "";
+        tbData
+          .filter((d) =>
+            d.ex.toLocaleLowerCase().includes(filter.toLowerCase())
+          )
+          .forEach((d) => {
+            const tRow = document.createElement("tr");
+            tRow.innerHTML = `<td class="exchange"><span class="mobile-table-label">Exchange: </span>${d.ex}</td><td class="link"><span class="mobile-table-label">Link: </span><a href="${d.l}" target="_blank">${d.l}</a></td><td class="code"><span class="mobile-table-label">Code: </span>${d.c}</td><td class="note"><span class="mobile-table-label">Note: </span>${d.n}</td>`;
+            tableBody.appendChild(tRow);
+          });
+      };
+
+      drawTable(filterValue);
+
+      document
+        .querySelector(".filter-input")
+        .addEventListener("input", (ev) => {
+          console.log(ev);
+          window.history.pushState({}, null, `#?q=${ev.target.value}`);
+          drawTable(ev.target.value);
+        });
     </script>
   </body>
 </html>
