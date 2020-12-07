@@ -83,6 +83,7 @@
     </footer>
 
     <script>
+      const filterInput = document.querySelector(".filter-input");
       let filterValue = "";
       if (window.location.href.includes("q=")) {
         const filterValueStartIndex =
@@ -99,7 +100,7 @@
         } else {
           filterValue = window.location.href.substring(filterValueStartIndex);
         }
-        document.querySelector(".filter-input").value = filterValue;
+        filterInput.value = filterValue;
       }
 
       const thData = ["Exchange", "Link", "Code", "Note"];
@@ -219,11 +220,19 @@
 
       drawTable(filterValue);
 
+      const syncToLocationAndRedrawTable = (filter) => {
+        window.history.pushState({}, null, `#?q=${filter}`);
+        drawTable(filter);
+      };
+
+      filterInput.addEventListener("input", (ev) => {
+        syncToLocationAndRedrawTable(ev.target.value);
+      });
       document
-        .querySelector(".filter-input")
-        .addEventListener("input", (ev) => {
-          window.history.pushState({}, null, `#?q=${ev.target.value}`);
-          drawTable(ev.target.value);
+        .querySelector(".filter-input-clear")
+        .addEventListener("click", (ev) => {
+          filterInput.value = "";
+          syncToLocationAndRedrawTable(filterInput.value);
         });
     </script>
   </body>
