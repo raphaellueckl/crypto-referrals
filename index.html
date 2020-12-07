@@ -20,15 +20,12 @@
       .content {
         flex: 1 0 auto;
       }
-
       footer {
         flex-shrink: 0;
       }
-
       thead {
         display: none;
       }
-
       tr {
         display: flex;
         flex-direction: column;
@@ -38,11 +35,27 @@
         padding: 5px;
         border-radius: 15px;
       }
-
       .mobile-table-label {
         font-weight: 600;
       }
-
+      .filter-input {
+        height: 36px;
+      }
+      .filter-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .filter-container > * {
+        margin: 0 2px;
+      }
+      .filter-input-clear {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        width: 42px;
+      }
       @media (min-width: 576px) {
         .mobile-table-label {
           display: none;
@@ -53,12 +66,10 @@
   <body>
     <h1>Find referrals to sign up on exchanges here</h1>
     <div class="content">
-      <div>
-        <label>
-          Search:
-          <input class="filter-input" />
-        </label>
-        <!-- <button>Share Search Result 🚀</button> -->
+      <div class="filter-container">
+        <label for="filter-input"> Search:</label>
+        <input class="filter-input" id="filter-input" />
+        <button class="filter-input-clear">❌</button>
       </div>
       <table class="table">
         <thead></thead>
@@ -157,6 +168,12 @@
           ex: "Bitcoin.com",
           l: "https://exchange.bitcoin.com/referral/f6a56dca2e0bbdba",
           c: "f6a56dca2e0bbdba",
+          n: "",
+        },
+        {
+          ex: "BitFlyer",
+          l: "https://bitflyer.com/en-eu?affi=s2oykitz",
+          c: "s2oykitz",
           n: "",
         },
         {
