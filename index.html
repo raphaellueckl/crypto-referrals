@@ -208,7 +208,19 @@
           )
           .forEach((d) => {
             const tRow = document.createElement("tr");
-            tRow.innerHTML = `<td class="exchange"><span class="mobile-table-label">Exchange: </span>${d.ex}</td><td class="link"><span class="mobile-table-label">Link: </span><a href="${d.l}" target="_blank">${d.l}</a></td><td class="code"><span class="mobile-table-label">Code: </span>${d.c}</td><td class="note"><span class="mobile-table-label">Note: </span>${d.n}</td>`;
+            tRow.innerHTML = `<td class="exchange"><span class="mobile-table-label">Exchange: </span>${
+              d.ex
+            }</td><td class="link"><span class="mobile-table-label">Link: </span><a href="${
+              d.l
+            }" target="_blank">${
+              d.l
+            }</a></td><td class="code"><span class="mobile-table-label">Code: </span>${
+              d.c
+            }</td>${
+              d.n
+                ? `<td class="note"><span class="mobile-table-label">Note: </span>${d.n}</td>`
+                : ""
+            }`;
             tableBody.appendChild(tRow);
           });
       };
