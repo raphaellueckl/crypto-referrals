@@ -37,11 +37,17 @@
       tr {
         display: flex;
         flex-direction: column;
-        border: 1px solid black;
+        border: 1px solid lightsalmon;
         align-items: center;
         margin: 2px 20px;
         padding: 5px;
-        border-radius: 10px;
+        /* bor/* border-top-left- =adiuT 2LxR        border-top-right-radius: 20px;
+        /* bor/* border-top-left- =adiuT 2LxR        border-top-right-radius: 20px;
+        /* bor/* border-top-left- =adiuT 2LxR        border-top-right-radius: 20px;
+        /* bor/* border-top-left- =adiuT 2LxR        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px; */
+        background: lightsalmon;
       }
       .mobile-table-label {
         font-weight: 600;
@@ -249,6 +255,13 @@
         tableHead.appendChild(tHead);
       });
 
+      const addRandomBorders = (style) => {
+        style.borderTopLeftRadius = `${Math.random() * 50 + 10}px`;
+        style.borderTopRightRadius = `${Math.random() * 50 + 10}px`;
+        style.borderBottomRightRadius = `${Math.random() * 50 + 10}px`;
+        style.borderBottomLeftRadius = `${Math.random() * 50 + 10}px`;
+      };
+
       const drawTable = (filter) => {
         const tableBody = document.querySelector(".table > tbody");
         tableBody.innerHTML = "";
@@ -258,6 +271,7 @@
           )
           .forEach((d) => {
             const tRow = document.createElement("tr");
+            addRandomBorders(tRow.style);
             tRow.innerHTML = `
             <td class="exchange">
               <span class="mobile-table-label">Exchange: </span>${d.ex}
