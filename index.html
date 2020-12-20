@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-      Crypto Referral Codes - Binance, Coinbase, Crypto.com, ...
-    </title>
-    <meta name="author" content="User of binance, crypto.com, gemini, coinbase, bitpanda, huobi, bitfinex, kucoin, etoro & more!">
-    <meta name="description" content="Friend referral codes for crypto & stock exchanges. Sign up to trade on binance, crypto.com, gemini, coinbase, bitpanda, huobi, bitfinex, kucoin, etoro & more!">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Crypto Referral Codes - Binance, Coinbase, Crypto.com, ...</title>
+    <meta
+      name="author"
+      content="User of binance, crypto.com, gemini, coinbase, bitpanda, huobi, bitfinex, kucoin, etoro & more!"
+    />
+    <meta
+      name="description"
+      content="Friend referral codes for crypto & stock exchanges. Sign up to trade on binance, crypto.com, gemini, coinbase, bitpanda, huobi, bitfinex, kucoin, etoro & more!"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
 
     <style>
       html,
@@ -94,7 +101,10 @@
     </style>
   </head>
   <body>
-    <h1>Find referral links & codes to sign up on several crypto and stock exchanges</h1>
+    <h1>
+      Find referral links & codes to sign up on several crypto and stock
+      exchanges
+    </h1>
     <div class="content">
       <div class="filter-container">
         <label for="filter-input"> Search:</label>
@@ -109,9 +119,9 @@
     <footer>
       Disclaimer: All variable referral benefits are optimized to give you the
       maximum possible share, as some exchanges offer to tinker with those
-      numbers. This page under copyright.
-
-      The goal is to provide you with invitation codes and referral codes to sign up on exchanges and apps to get invitation bonus and sign up bonuses for all kinds of services.
+      numbers. This page under copyright. The goal is to provide you with
+      invitation codes and referral codes to sign up on exchanges and apps to
+      get invitation bonus and sign up bonuses for all kinds of services.
     </footer>
 
     <script>
@@ -251,19 +261,31 @@
           )
           .forEach((d) => {
             const tRow = document.createElement("tr");
-            tRow.innerHTML = `<td class="exchange"><span class="mobile-table-label">Exchange: </span>${
-              d.ex
-            }</td><td class="link"><span class="mobile-table-label">Link: </span><a href="${
-              d.l
-            }" target="_blank">${
-              d.l
-            }</a></td><td class="code"><span class="mobile-table-label">Code: </span>${
-              d.c
-            }</td>${
-              d.n
-                ? `<td class="note"><span class="mobile-table-label">Note: </span>${d.n}</td>`
-                : ""
-            }`;
+            tRow.innerHTML = `
+            <td class="exchange">
+              <span class="mobile-table-label">Exchange: </span>${d.ex}
+            </td>
+            <td class="link">
+              ${
+                d.l
+                  ? `<span class="mobile-table-label">Link: </span><a href="${d.l}" target="_blank">${d.l}</a>`
+                  : ""
+              }
+            </td>
+            <td class="code">
+              ${
+                d.c
+                  ? `<span class="mobile-table-label">Code: </span>${d.c}`
+                  : ""
+              }
+            </td>
+            <td class="note">
+              ${
+                d.n
+                  ? `<span class="mobile-table-label">Note: </span>${d.n}`
+                  : ""
+              }
+            </td>`;
             tableBody.appendChild(tRow);
           });
       };
