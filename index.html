@@ -32,7 +32,7 @@
         flex-direction: column;
         align-items: center;
         background: var(--background-color);
-        color: rgb(244, 233, 203)
+        color: rgb(244, 233, 203);
       }
       .content {
         flex: 1 0 auto;
@@ -47,7 +47,6 @@
         display: flex;
         flex-direction: column;
         border: 1px solid var(--box-background-color);
-        align-items: center;
         margin: 10px;
         padding: 20px;
         background: var(--box-background-color);
@@ -82,9 +81,16 @@
         background: var(--box-background-color);
         border-radius: 21px;
       }
+      .key-value {
+        display: flex;
+        justify-content: space-between;
+      }
+      .key-value > * {
+        display: block;
+        width: 48%;
+      }
       td {
         padding: 2px 0;
-        text-align: center;
       }
       footer {
         margin-top: 20px;
@@ -196,7 +202,7 @@
           ex: "Revolut",
           l: "https://revolut.com/referral/raphae1006!MSO",
           c: "raphae1006",
-          m: "30$ for you"
+          m: "30$ for you",
         },
         {
           ex: "Crypto.com - Exchange",
@@ -262,17 +268,18 @@
           ex: "CoinEx",
           l: "https://www.coinex.com/register?refer_code=8myxu",
           c: "8myxu",
-          n: ""
+          n: "",
         },
         {
           ex: "Changelly",
-          l: "https://changelly.com?from=btc&to=eth&amount=0.1&ref_id=dwex71fu5mvr5usv",
-          c: "dwex71fu5mvr5usv"
+          l:
+            "https://changelly.com?from=btc&to=eth&amount=0.1&ref_id=dwex71fu5mvr5usv",
+          c: "dwex71fu5mvr5usv",
         },
         {
           ex: "Changelly Pro",
           l: "https://pro.changelly.com/referral/d2999c937addca4f",
-          c: "d2999c937addca4f"
+          c: "d2999c937addca4f",
         },
         {
           ex: "Tradeogre",
@@ -296,10 +303,10 @@
       });
 
       const addRandomBorders = (style) => {
-        style.borderTopLeftRadius = `${Math.random() * 50 + 10}px`;
-        style.borderTopRightRadius = `${Math.random() * 50 + 10}px`;
-        style.borderBottomRightRadius = `${Math.random() * 50 + 10}px`;
-        style.borderBottomLeftRadius = `${Math.random() * 50 + 10}px`;
+        style.borderTopLeftRadius = `${Math.random() * 40 + 10}px`;
+        style.borderTopRightRadius = `${Math.random() * 40 + 10}px`;
+        style.borderBottomRightRadius = `${Math.random() * 40 + 10}px`;
+        style.borderBottomLeftRadius = `${Math.random() * 40 + 10}px`;
       };
 
       const drawTable = (filter) => {
@@ -313,27 +320,29 @@
             const tRow = document.createElement("tr");
             addRandomBorders(tRow.style);
             tRow.innerHTML = `
-            <td class="exchange">
-              <span class="mobile-table-label">Exchange: </span>${d.ex}
+            <td class="key-value exchange">
+              <span class="mobile-table-label">Exchange: </span>
+              <span>${d.ex}</span>
             </td>
-            <td class="link">
+            <td class="key-value link">
               ${
                 d.l
                   ? `<span class="mobile-table-label">Referral-Link: </span><a href="${d.l}" target="_blank" rel="noopener">${d.l}</a>`
                   : ""
               }
             </td>
-            <td class="code">
+            <td class="key-value code">
               ${
                 d.c
-                  ? `<span class="mobile-table-label">Code (optional!): </span>${d.c}`
+                  ? `<span class="mobile-table-label">Code (optional!): </span>
+                  <span>${d.c}</span>`
                   : ""
               }
             </td>
-<!--            <td class="note">
+<!--            <td class="key-value note">
               ${
                 d.n
-                  ? `<span class="mobile-table-label">Note: </span>${d.n}`
+                  ? `<span class="mobile-table-label">Note: </span><span>${d.n}</span>`
                   : ""
               }
 -->
