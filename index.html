@@ -90,6 +90,10 @@
         width: 48%;
         overflow-wrap: break-word;
       }
+      .exchange {
+        font-weight: bold;
+        color: chocolate;
+      }
       td {
         padding: 2px 0;
       }
@@ -310,9 +314,9 @@
             const tRow = document.createElement("tr");
             addRandomBorders(tRow.style);
             tRow.innerHTML = `
-            <td class="key-value exchange">
+            <td class="key-value">
               <span class="mobile-table-label">Exchange: </span>
-              <span>${d.ex}</span>
+              <span class="exchange">${d.ex}</span>
             </td>
             <td class="key-value link">
               ${
